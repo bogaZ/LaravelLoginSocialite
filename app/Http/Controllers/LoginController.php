@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -24,6 +26,20 @@ class LoginController extends Controller
 
         return back()->with('loginError', 'Login is not successfully, please Check your Email & Password');
 
+    }
+
+    public function doRegister(Request $request)
+    {
+
+        $validate = $request->validate([
+            'name' => 'required',
+            'email' => 'required',
+            'password' => 'required',
+        ]);
+        $validate['password'] = bcrypt($request['password']);
+        User::create($validate);
+
+        return 'sukses';
     }
 
     public function logout(Request $request)

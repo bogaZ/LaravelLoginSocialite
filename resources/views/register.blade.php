@@ -39,7 +39,7 @@
                                     <p class="mb-4">Lorem ipsum dolor sit amet elit. Sapiente sit aut eos consectetur
                                         adipisicing.</p>
                                 </div>
-                                <form action="/" method="post">
+                                <form action="{{ route('doRegister') }}" method="post">
                                     @csrf
                                     <div class="form-group first">
                                         <label for="username">Username</label>
@@ -59,12 +59,12 @@
                                             required>
 
                                     </div>
-                                    <div class="form-group last mb-4">
+                                    {{-- <div class="form-group last mb-4">
                                         <label for="password">Retype Password</label>
                                         <input type="password" class="form-control" id="password"
-                                            name="retype_password" required>
+                                            name="password_confirm" required>
 
-                                    </div>
+                                    </div> --}}
 
                                     <input type="submit" value="Sigh Up"
                                         class="btn btn-pill text-white btn-block btn-primary">
