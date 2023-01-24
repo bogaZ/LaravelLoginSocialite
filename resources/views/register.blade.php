@@ -39,18 +39,38 @@
                                     <p class="mb-4">Lorem ipsum dolor sit amet elit. Sapiente sit aut eos consectetur
                                         adipisicing.</p>
                                 </div>
+                                @error('email')
+                                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                        {{ $message }}
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <script></script>
+                                @enderror
+                                @error('password')
+                                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                        {{ $message }}
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                @enderror
+
+
+
                                 <form action="{{ route('doRegister') }}" method="post">
                                     @csrf
                                     <div class="form-group first">
                                         <label for="username">Username</label>
-                                        <input type="text" class="form-control" id="username" name="name"
-                                            required>
+                                        <input type="text" class="form-control " id="username" name="name"
+                                            required value="{{ old('name') }}">
 
                                     </div>
                                     <div class="form-group first">
-                                        <label for="username">Email</label>
+                                        <label for="email">Email</label>
                                         <input type="email" class="form-control" id="email" name="email"
-                                            required>
+                                            required value="{{ old('email') }}">
 
                                     </div>
                                     <div class="form-group last mb-4">
@@ -59,20 +79,22 @@
                                             required>
 
                                     </div>
-                                    {{-- <div class="form-group last mb-4">
-                                        <label for="password">Retype Password</label>
+                                    <div class="form-group last mb-4">
+                                        <label for="password">Password Confirmation</label>
                                         <input type="password" class="form-control" id="password"
-                                            name="password_confirm" required>
+                                            name="password_confirmation" required>
 
-                                    </div> --}}
+                                    </div>
 
                                     <input type="submit" value="Sigh Up"
                                         class="btn btn-pill text-white btn-block btn-primary">
 
-                                    <span class="d-block text-center my-4 text-muted"><a href="/">Sigh In</a> or
+                                    <span class="d-block text-center my-4 text-muted"><a
+                                            href="{{ route('login') }}">Sigh In</a> or
                                         sign in with</span>
 
-                                    <div class="social-login text-center">
+                                    <div class="social-login
+                                            text-center">
                                         <a href="#" class="facebook">
                                             <span class="icon-facebook mr-3"></span>
                                         </a>
@@ -81,6 +103,14 @@
                                         </a>
                                     </div>
                                 </form>
+                                @if ($errors->any())
+                                    <script>
+                                        const elements = document.getElementsByClassName("form-group");
+                                        for (let i = 0; i < 2; i++) {
+                                            elements[i].classList.add("field--not-empty");
+                                        }
+                                    </script>
+                                @endif
                             </div>
                         </div>
                     </div>

@@ -44,13 +44,30 @@
                                         </button>
                                     </div>
                                 @endif
+                                @error('email')
+                                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                        {{ $message }}
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <script></script>
+                                @enderror
+                                @error('password')
+                                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                        {{ $message }}
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                @enderror
 
                                 <form action="/do/login" method="post">
                                     @csrf
                                     <div class="form-group first">
                                         <label for="email">Email</label>
                                         <input type="email" class="form-control" id="email" name="email"
-                                            required>
+                                            required value="{{ old('email') }}">
                                     </div>
                                     <div class="form-group last mb-4">
                                         <label for="password">Password</label>
@@ -82,6 +99,14 @@
                                         </a>
                                     </div>
                                 </form>
+                                @if ($errors->any())
+                                    <script>
+                                        const elements = document.getElementsByClassName("form-group");
+                                        for (let i = 0; i < 1; i++) {
+                                            elements[i].classList.add("field--not-empty");
+                                        }
+                                    </script>
+                                @endif
                             </div>
                         </div>
                     </div>
