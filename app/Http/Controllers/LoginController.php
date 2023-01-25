@@ -41,13 +41,6 @@ class LoginController extends Controller
         ]);
         $validate['password'] = bcrypt($request['password']);
 
-        // $request['password'] = bcrypt($request['password']);
-
-        // $data = [
-        //     'name' => $request['name'],
-        //     'email' => $request['email'],
-        //     'password' => $request['password']
-        // ];
         $login = User::create($validate);
 
         Auth::login($login);
