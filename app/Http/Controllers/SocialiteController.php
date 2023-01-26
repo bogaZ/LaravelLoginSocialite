@@ -24,7 +24,7 @@ class SocialiteController extends Controller
         try {
             $socialiteUser = Socialite::driver($provider)->user();
 
-            $data = User::all()->firstWhere('google_id', $socialiteUser->id);
+            $data = User::all()->firstWhere($provider . "_id", $socialiteUser->id);
 
             if (!empty($data)) {
                 Auth::login($data);

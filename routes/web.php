@@ -30,12 +30,12 @@ Route::middleware(['guest'])->group(function () {
 
     Route::post('/do/register', [LoginController::class, 'doRegister'])->name('doRegister');
 
+    Route::get('auth/{provider}', [SocialiteController::class, 'redirect']);
 
+    Route::get('auth/{provider}/callback', [SocialiteController::class, 'callback']);
 });
 
-Route::get('auth/{provider}', [SocialiteController::class, 'redirect']);
 
-Route::get('auth/{provider}/callback', [SocialiteController::class, 'callback']);
 
 Route::middleware(['auth'])->group(function () {
     Route::post('/logout', [LoginController::class, 'logout'])->name('logout');

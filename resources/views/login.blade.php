@@ -91,7 +91,7 @@
                                         sign in with</span>
 
                                     <div class="social-login text-center">
-                                        <a href="#" class="facebook">
+                                        <a href="/auth/facebook" class="facebook">
                                             <span class="icon-facebook mr-3"></span>
                                         </a>
                                         <a href="/auth/google" class="google">
