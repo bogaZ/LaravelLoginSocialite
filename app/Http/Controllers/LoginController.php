@@ -22,7 +22,6 @@ class LoginController extends Controller
             'password' => ['required', 'min:8'],
         ]);
 
-
         if (Auth::attempt($credentials, $request['remember'])) {
 
             $request->session()->regenerate();
@@ -62,6 +61,10 @@ class LoginController extends Controller
 
     public function logout(Request $request)
     {
+        // $user = Auth::user();
+
+        // $user->update(['remember_token' => '']);
+
         Auth::logout();
 
         $request->session()->invalidate();
