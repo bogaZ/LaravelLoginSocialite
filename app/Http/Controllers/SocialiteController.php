@@ -21,7 +21,9 @@ class SocialiteController extends Controller
 
     public function callback($provider)
     {
+
         try {
+
             $socialiteUser = Socialite::driver($provider)->user();
 
             $data = User::all()->firstWhere($provider . "_id", $socialiteUser->id);

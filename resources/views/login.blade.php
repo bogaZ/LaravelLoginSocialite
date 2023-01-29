@@ -79,7 +79,7 @@
                                     <div class="d-flex mb-5 align-items-center">
                                         <label class="control control--checkbox mb-0"><span class="caption">Remember
                                                 me</span>
-                                            <input type="checkbox" checked="checked" />
+                                            <input type="checkbox" name="remember" value="1" />
                                             <div class="control__indicator"></div>
                                         </label>
                                         <span class="ml-auto"><a href="#" class="forgot-pass">Forgot
